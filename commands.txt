@@ -1,0 +1,3 @@
+docker build -t node-app-image .
+
+docker run -p 80:80 --rm --name node-app-container node-app
