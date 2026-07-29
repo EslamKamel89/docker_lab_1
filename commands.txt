@@ -5,4 +5,14 @@ docker run \
 --name node-app-container \
 -v "$(pwd)":/app \
 -p 80:80 \
+-d \
+-it \
 node-app-image
+
+
+docker start -a -i node-app-container
+
+docker attach node-app-container
+
+docker logs node-app-container
+
