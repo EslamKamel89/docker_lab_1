@@ -10,5 +10,5 @@ COPY . .
 
 EXPOSE 80
 # this command run when running the container
-CMD ["node" , "server.js"]
+CMD ["node" ,"--watch" , "server.js"]
 
