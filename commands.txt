@@ -16,3 +16,23 @@ docker attach node-app-container
 
 docker logs node-app-container
 
+docker rm <container>
+
+docker rm container1 container2 container3
+
+docker ps
+
+docker ps -a
+
+docker images
+
+docker rmi image1 image2 image3
+
+
+docker image prune
+
+docker image inspect <image>
+
+docker cp doc/notes.txt node-app-container:/
+
+docker cp node-app-container:/notes.txt ./doc/notes.txt

@@ -125,3 +125,171 @@ Example:
 ```bash
 docker logs node-app-container
 ```
+
+---
+
+## List Containers
+
+### Running Containers
+
+```bash
+docker ps
+```
+
+Display only the containers that are currently running.
+
+Example:
+
+```bash
+docker ps
+```
+
+### All Containers
+
+```bash
+docker ps -a
+```
+
+Display both running and stopped containers.
+
+Example:
+
+```bash
+docker ps -a
+```
+
+---
+
+## Remove Containers
+
+Remove one container:
+
+```bash
+docker rm {container_name}
+```
+
+Remove multiple containers:
+
+```bash
+docker rm {container_1} {container_2} {container_3}
+```
+
+Examples:
+
+```bash
+docker rm node-app-container
+```
+
+```bash
+docker rm container1 container2 container3
+```
+
+> **Note:** Containers must be stopped before they can be removed.
+
+---
+
+## List Images
+
+```bash
+docker images
+```
+
+Display all images stored locally.
+
+Example:
+
+```bash
+docker images
+```
+
+---
+
+## Remove Images
+
+Remove one or more images:
+
+```bash
+docker rmi {image_name}
+```
+
+```bash
+docker rmi {image_1} {image_2} {image_3}
+```
+
+Examples:
+
+```bash
+docker rmi node-app-image
+```
+
+```bash
+docker rmi image1 image2 image3
+```
+
+> **Note:** An image cannot be removed while it is still being used by any container (running or stopped).
+
+---
+
+## Remove Unused Images
+
+```bash
+docker image prune
+```
+
+Remove images that are no longer being used.
+
+Example:
+
+```bash
+docker image prune
+```
+
+---
+
+## Inspect an Image
+
+```bash
+docker image inspect {image_name}
+```
+
+Display detailed metadata about an image, including its configuration, layers, exposed ports, environment variables, and operating system.
+
+Example:
+
+```bash
+docker image inspect node-app-image
+```
+
+---
+
+## Copy Files Between Host and Container
+
+### Copy a File from the Host to a Container
+
+```bash
+docker cp {host_file_path} {container_name}:{container_file_path}
+```
+
+Copy a file or directory from your local machine into a running or stopped container.
+
+Example:
+
+```bash
+docker cp doc/notes.txt node-app-container:/
+```
+
+### Copy a File from a Container to the Host
+
+```bash
+docker cp {container_name}:{container_file_path} {host_file_path}
+```
+
+Copy a file or directory from a container to your local machine.
+
+Example:
+
+```bash
+docker cp node-app-container:/notes.txt ./doc/notes.txt
+```
+
+> **Note:** `docker cp` works with both running and stopped containers. If the destination directory already exists, the copied file is placed inside it. If the destination file does not exist, Docker creates it.
