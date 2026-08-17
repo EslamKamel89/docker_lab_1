@@ -36,3 +36,13 @@ docker image inspect <image>
 docker cp doc/notes.txt node-app-container:/
 
 docker cp node-app-container:/notes.txt ./doc/notes.txt
+
+
+docker run \
+    --rm \
+    -d  \
+    -p 3000:80 \
+    --name feedback-app \
+    -v "$(pwd)":/app \
+    -v /app/node_modules \
+    feedback-image

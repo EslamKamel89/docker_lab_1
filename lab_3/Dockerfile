@@ -1,4 +1,4 @@
-FROM node:14 
+FROM node:latest
 
 WORKDIR /app
 
@@ -12,4 +12,4 @@ EXPOSE 80
 
 # VOLUME ["/app/feedback"]
 
-CMD ["node" , "server.js"]
+CMD ["node" ,"--watch", "server.js"]
