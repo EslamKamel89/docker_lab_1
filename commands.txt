@@ -46,3 +46,51 @@ docker run \
     -v "$(pwd)":/app \
     -v /app/node_modules \
     feedback-image
+
+
+docker run \
+    -d \
+    --rm \
+    -p 3000:80 \
+    -v $(pwd):/app:ro \
+    -v /app/node_modules \
+    -v /app/feedback \
+    -v /app/temp \
+    --name feedback-app \
+    feedback-image
+
+docker volume ls
+
+docker volume create feedback-files
+
+docker volume rm feedback-files
+
+docker run \
+    -d \
+    --rm \
+    -p 3000:8000 \
+    -v $(pwd):/app:ro \
+    -v /app/node_modules \
+    -v /app/feedback \
+    -v /app/temp \
+    --env PORT=8000 \
+    --name feedback-app \
+    feedback-image
+
+
+docker run \
+    -d \
+    --rm \
+    -p 3000:8000 \
+    -v $(pwd):/app:ro \
+    -v /app/node_modules \
+    -v /app/feedback \
+    -v /app/temp \
+    --env-file ./.env \
+    --name feedback-app \
+    feedback-image
+
+docker build \
+    -t feedback-image \
+    --build-arg DEFAULT_PORT=80 \
+    .
