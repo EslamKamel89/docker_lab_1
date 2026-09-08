@@ -94,3 +94,18 @@ docker build \
     -t feedback-image \
     --build-arg DEFAULT_PORT=80 \
     .
+
+docker build -t favorites-image .
+
+docker run \
+    --rm \
+    --name favorites-app \
+    -p 3000:3000 \
+    favorites-image
+
+
+docker run \
+    --name mongodb \
+    mongo
+
+docker inspect mongodb
