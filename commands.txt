@@ -109,3 +109,20 @@ docker run \
     mongo
 
 docker inspect mongodb
+
+docker network create favorites-net
+
+docker network ls
+
+docker run \
+    --name mongodb \
+    -d \
+    --network favorites-net \
+    mongo
+
+docker run \
+    --rm \
+    --name favorites-app \
+    --network favorites-net \
+    -p 3000:3000 \
+    favorites-image
