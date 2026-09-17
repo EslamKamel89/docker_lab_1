@@ -116,6 +116,7 @@ docker network ls
 
 docker run \
     --name mongodb \
+    --rm \
     -d \
     --network favorites-net \
     mongo
