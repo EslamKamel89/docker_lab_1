@@ -127,3 +127,36 @@ docker run \
     --network favorites-net \
     -p 3000:3000 \
     favorites-image
+
+docker network create goals-network
+
+docker run \
+    --name mongodb \
+    -d \
+    --rm \
+    -p 27017:27017 \
+    --network goals-network \
+    mongo
+
+
+docker build \
+    -t goals-backend-image \
+    backend
+
+
+docker run \
+    --name goals-backend-app \
+    -p 80:80 \
+    --rm \
+    --network goals-network \
+    goals-backend-image
+
+docker build \
+    -t goals-frontend-image \
+    frontend
+
+docker run \
+    --name goals-frontend-app \
+    -p 3000:3000 \
+    --rm \
+    goals-frontend-image
