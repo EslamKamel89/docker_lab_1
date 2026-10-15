@@ -148,6 +148,7 @@ docker run \
     --name goals-backend-app \
     -p 80:80 \
     --rm \
+    -d \
     --network goals-network \
     goals-backend-image
 
@@ -159,4 +160,16 @@ docker run \
     --name goals-frontend-app \
     -p 3000:3000 \
     --rm \
+    -d \
     goals-frontend-image
+
+docker run \
+    --name mongodb \
+    -d \
+    --rm \
+    -v mongodb:/data/db \
+    -p 27017:27017 \
+    -e MONGO_INITDB_ROOT_USERNAME=max \
+    -e MONGO_INITDB_ROOT_PASSWORD=secret \
+    --network goals-network \
+    mongo
